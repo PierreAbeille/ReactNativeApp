@@ -1,0 +1,45 @@
+Documentation du devoir :
+
+Dépendences :
+    React Native Calendars : https://github.com/wix/react-native-calendars
+
+    React Navigation : https://reactnavigation.org/ 
+    Tab navigation : https://reactnavigation.org/docs/tab-based-navigation
+    Stack navigator : https://reactnavigation.org/docs/stack-navigator/ 
+
+    Date picker : https://github.com/react-native-datetimepicker/datetimepicker 
+
+Nomenclature :
+    JS : 
+        variables : camelCase
+        composant : Snake_Case
+    'CSS' : 
+        classes : avec-des-tirets
+    
+Consignes : 
+    1 Menu de navigation ( 2 Onglets Calendrier ou Planning )
+        -- Pierre
+    3 Pages :
+        1 Calendrier :
+            -- Pierre
+        1 Planning :
+            -- Yohann
+        1 Page d'ajout d'évènement :
+            -- On verra
+
+Nom des composants :
+    - App :
+        States :
+        Fonctions :
+    - Navigation :
+        States :
+        Fonctions :
+    - Calendar :
+        States :
+        Fonctions :
+    - Planning :
+        States :
+        Fonctions :
+    - AddEvent :
+        States :
+        Fonctions :
