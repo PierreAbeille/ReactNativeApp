@@ -16,6 +16,14 @@ const CalendarPage = () => {
                     [selected]: {selected: true}
                 }}
             />
+            <View>
+                <Text>
+                    {selected === '' ? 'Aucune date sélectionnée' 
+                    : selected === new Date().toISOString().split('T')[0] ? 'Aujourd\'hui' 
+                    : new Date(selected).toLocaleDateString('fr-FR', {dateStyle: 'medium', timeStyle: 'none'})}
+                </Text>
+            </View>
+            //add a button to
         </View>
     );
 }
