@@ -3,6 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import PlanningPage from './components/Planning';
+import AgendaPage from './components/Agenda';
 
 function Calendar() {
   return (
@@ -15,7 +17,7 @@ function Calendar() {
 function Planning() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Planning</Text>
+      <PlanningPage></PlanningPage>
     </View>
   );
 }
