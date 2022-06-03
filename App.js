@@ -6,11 +6,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import PlanningPage from './components/Planning';
 import AgendaPage from './components/Agenda';
 
+import CalendarPage from './pages/CalendarPage';
+
 function Calendar() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Calendar</Text>
-    </View>
+    <CalendarPage />
   );
 }
 
