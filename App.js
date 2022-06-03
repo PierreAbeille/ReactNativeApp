@@ -1,16 +1,17 @@
+import 'react-native-gesture-handler';
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import PlanningPage from './components/Planning';
-import AgendaPage from './components/Agenda';
+
+import CalendarPage from './pages/CalendarPage';
+import CalendarStack from './components/CalendarStack';
 
 function Calendar() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Calendar</Text>
-    </View>
+    <CalendarStack />
   );
 }
 
@@ -26,9 +27,21 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Calendrier" component={Calendar} />
-      <Tab.Screen name="Programme" component={Planning} />
+    <Tab.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#06aed5',
+        }
+      }}
+    >
+      <Tab.Screen 
+        name="Calendrier" 
+        component={Calendar} 
+      />
+      <Tab.Screen 
+        name="Programme" 
+        component={Planning} 
+      />
     </Tab.Navigator>
   );
 }
