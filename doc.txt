@@ -43,3 +43,8 @@ Nom des composants :
     - AddEvent :
         States :
         Fonctions :
+
+Objet Event : 
+    - Name : Text
+    - startDate : Date (+ DayTime (?))
+    - endDate : Date (+ DayTime (?))
