@@ -5,7 +5,6 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import PlanningPage from './components/Planning';
-import AgendaPage from './components/Agenda';
 
 import CalendarPage from './pages/CalendarPage';
 import CalendarStack from './components/CalendarStack';
