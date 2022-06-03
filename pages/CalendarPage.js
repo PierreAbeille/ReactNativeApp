@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text} from 'react-native';
 import {Calendar} from 'react-native-calendars';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import {LocaleConfig} from 'react-native-calendars';
 import Jour from '../components/Jour';
 
