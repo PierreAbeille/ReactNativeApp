@@ -1,32 +1,43 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default function App() {
-  const [age, agePlus] = useState(0);
-
+function Calendar() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Mon âge est : {age}</Text>
-      <Button
-        style={styles.btn}
-        onPress={() => {agePlus(age + 1)}}
-        title="Fais moi viellir..."
-      />
-      <Button
-        style={styles.btn}
-        onPress={() => {agePlus(age - 1)}}
-        title="Fais moi rajeunir..."
-      />
-      <Button
-        style={styles.btn}
-        onPress={() => {agePlus(0)}}
-        title="Fais moi naître"
-      />
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Calendar</Text>
     </View>
   );
-};
+}
+
+function Planning() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Planning</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Calendrier" component={Calendar} />
+      <Tab.Screen name="Programme" component={Planning} />
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer  style={styles.container}>
+      <MyTabs />
+    </NavigationContainer>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -35,12 +46,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  text: {
-    marginBottom : 100
-  },
-  btn: {
-    width : 250,
-    marginBottom : 50
-  }
-
 });
