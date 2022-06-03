@@ -45,6 +45,15 @@ Nom des composants :
         Fonctions :
 
 Objet Event : 
-    - Name : Text
+    - name : Text
     - startDate : Date (+ DayTime (?))
     - endDate : Date (+ DayTime (?))
+
+Palette :
+    PrimaryColor : #06aed5
+    SecondaryColor : #086788
+    TertiaryColor : #f0c808
+    QuaternaryColor : #fff1d0
+    QuinaryColor : #dd1c1a
+    
+
