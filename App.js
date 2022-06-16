@@ -9,9 +9,20 @@ import PlanningPage from './components/Planning';
 import CalendarPage from './pages/CalendarPage';
 import CalendarStack from './components/CalendarStack';
 
+export let items =  [
+  { date: '2022-06-05' , name: ['RDV dentiste', 'Véto'] },
+  { date: '2022-05-30' , name: ['Bordel ça marche']},
+  { date: '2022-06-29' , name: ['Truc en vrac']},
+  { date: '2022-05-29' , name: ['Wesh alors']},
+  { date: '2022-06-08' , name: ['Anniversaire machin'] },
+  { date: '2022-05-30' , name: ['Bordel ça marche']},
+  { date: '2022-07-17' , name: ['Ackip c mon anniv', 'douche du mois']},
+  { date: '2022-05-29' , name: ['Wesh alors']}
+];
+
 function Calendar() {
   return (
-    <CalendarStack />
+    <CalendarStack items={items} />
   );
 }
 

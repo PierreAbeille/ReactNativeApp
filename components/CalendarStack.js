@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
-import {Calendar} from 'react-native-calendars';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import {items} from '../App';
 
 import AddEventPage from '../pages/AddEventPage';
 import CalendarPage from '../pages/CalendarPage';
@@ -10,7 +10,7 @@ import CalendarPage from '../pages/CalendarPage';
 function CalendarP({navigation}) {
     return (
         <View>
-            <CalendarPage  />
+            <CalendarPage items={items}/>
             <Button
                 title="AddEventPage"
                 onPress={() => navigation.navigate('AddEventPage')}

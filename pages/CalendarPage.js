@@ -4,6 +4,7 @@ import {Calendar} from 'react-native-calendars';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {LocaleConfig} from 'react-native-calendars';
+import Jour from '../components/Jour';
 
 LocaleConfig.locales['fr'] = {
   monthNames: [
@@ -28,11 +29,15 @@ LocaleConfig.locales['fr'] = {
 
 LocaleConfig.defaultLocale = 'fr';
 
-const CalendarPage = () => {
+const CalendarPage = (props) => {
     const [selected, setSelected] = useState('');
+    const [name, setName] = useState('');
     const onDayPress = (day) => {
         setSelected(day.dateString);
-        // alert(`Date sélectionnée ${day.dateString}`);
+            setName('')
+            props.items.map((item)=>{
+                if(item.date == day.dateString) setName(item.name)
+            })
     }
     return (
         <View>
@@ -50,6 +55,7 @@ const CalendarPage = () => {
                     : selected === new Date().toISOString().split('T')[0] ? 'Aujourd\'hui' 
                     : new Date(selected).toLocaleDateString('fr-FR', {dateStyle: 'medium', timeStyle: 'none'})}
                 </Text>
+                {name ? <Jour date={selected} nom={name}>Date : {selected}</Jour> : <Text></Text>}
             </View>
         </View>
     );
