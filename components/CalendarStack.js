@@ -19,17 +19,17 @@ function CalendarP({navigation}) {
     );
 }
 
-function AddEventP({navigation}) {
+const AddEventP = () => {
     return (
         <View>
-            <AddEventPage />
+            <AddEventPage items={items}/>
         </View>
     );
 }
 
 const Stack = createStackNavigator();
 
-export default function CalendarStack() {
+export default function CalendarStack(props) {
     return (
             <Stack.Navigator>
                 <Stack.Screen 
@@ -39,9 +39,10 @@ export default function CalendarStack() {
                         presentation : 'modal',
                         headerShown : false
                     }}
+                    
                 />
                 <Stack.Screen 
-                    name="AddEventPage" 
+                    name="AddEventPage"
                     component={AddEventP}
                     options={{
                         presentation : 'modal'

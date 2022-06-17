@@ -7,7 +7,7 @@ class Jour extends Component{
             <View style={styles.jour}>
             <Text style={styles.date}>{this.props.date}</Text>
             {this.props.nom.map((name)=>{
-              return <Text style={styles.activite}>Activité : {name}</Text>})
+              return <Text key={name} style={styles.activite}>Activité : {name}</Text>})
             }
             </View >
         )

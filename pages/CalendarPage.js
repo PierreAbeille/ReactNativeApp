@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text} from 'react-native';
 import {Calendar} from 'react-native-calendars';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import {LocaleConfig} from 'react-native-calendars';
 import Jour from '../components/Jour';
 
@@ -39,13 +37,17 @@ const CalendarPage = (props) => {
                 if(item.date == day.dateString) setName(item.name)
             })
     }
+    let days = {} ;
+    props.items.map((item)=>{
+        let jr = item.date;
+        days[jr] = {selected: true, marked: true, selectedColor: '#0F4EE5', dotColor: '#a00303'};
+    })
+    
     return (
         <View>
             <Calendar
+                markedDates={days}
                 onDayPress={onDayPress}
-                markedDates={{
-                    [selected]: {selected: true}
-                }}
                 monthFormat={'MMMM yyyy'}
                 firstDay={1}
             />
