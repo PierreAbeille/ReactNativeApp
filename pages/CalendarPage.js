@@ -37,13 +37,17 @@ const CalendarPage = (props) => {
                 if(item.date == day.dateString) setName(item.name)
             })
     }
+    let days = {} ;
+    props.items.map((item)=>{
+        let jr = item.date;
+        days[jr] = {selected: true, marked: true, selectedColor: '#0F4EE5', dotColor: '#a00303'};
+    })
+    
     return (
         <View>
             <Calendar
+                markedDates={days}
                 onDayPress={onDayPress}
-                markedDates={{
-                    [selected]: {selected: true}
-                }}
                 monthFormat={'MMMM yyyy'}
                 firstDay={1}
             />

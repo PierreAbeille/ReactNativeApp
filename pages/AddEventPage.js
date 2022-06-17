@@ -2,24 +2,19 @@ import React from 'react';
 import {View, Text, Button} from 'react-native';
 import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import RNDateTimePicker from '@react-native-community/datetimepicker';
+import { TextInput } from 'react-native-gesture-handler';
 
-const AddEventPage = () => {
-    const [startDate, setStartDate] = React.useState(new Date());
-    const [endDate, setEndDate] = React.useState(new Date());
+
+const AddEventPage = (props) => {
+    const [date, setDate] = React.useState(new Date());
     const [name, setName] = React.useState('name');
 
     const [show, setShow] = React.useState(false);
 
-    const onChangeStartDate = (event, selectedDate) => {
+    const onChangeDate = (event, selectedDate) => {
         const currentDate = selectedDate || startDate;
         setShow(false);
-        setStartDate(currentDate);
-    }
-
-    const onChangeEndDate = (event, selectedDate) => {
-        const currentDate = selectedDate || endDate;
-        setShow(false);
-        setEndDate(currentDate);
+        setDate(currentDate);
     }
 
     const showDatePicker = () => {
@@ -31,31 +26,31 @@ const AddEventPage = () => {
     }
 
     const onPress = () => {
-        alert(`${name} ${startDate} ${endDate}`);
+
+        let dt = date.toISOString().split('T')[0];
+        let jr = name.toString();
+        let exists = false;
+        props.items.map((item)=>{
+            
+            if(item.date == date.toISOString().split('T')[0]) {
+                exists = true;
+                item.name.push(name.toString());
+            }
+        })
+
+        if(!exists){
+            props.items.push({date: date.toISOString().split('T')[0] , name: [name.toString()]});
+        }
     }
 
     return (
         <View>
             <View>
-                <Button
-                    title="Show Date Picker"
-                    onPress={showDatePicker}
-                />
-                {show && (
-                    <RNDateTimePicker
-                        mode="datetime"
-                        is24Hour={true}
-                        display="default"
-                        onChange={onChangeStartDate}
-                        value={startDate}
-                        onCancel={hideDatePicker}
-                        onConfirm={onChangeStartDate}
-                    />
-                )}
+                <TextInput title="Nom" placeholder="Nom de l'évènement" onChangeText={setName}/>
             </View>
             <View>
                 <Button
-                    title="Show Date Picker"
+                    title="Date de l'évènement"
                     onPress={showDatePicker}
                 />
                 {show && (
@@ -63,10 +58,10 @@ const AddEventPage = () => {
                         mode="datetime"
                         is24Hour={true}
                         display="default"
-                        onChange={onChangeEndDate}
-                        value={endDate}
+                        onChange={onChangeDate}
+                        value={date}
                         onCancel={hideDatePicker}
-                        onConfirm={onChangeEndDate}
+                        onConfirm={onChangeDate}
                     />
                 )}
             </View>
@@ -77,63 +72,5 @@ const AddEventPage = () => {
         </View>
     );
 }
-
-    // const showStartDatePicker = () => {
-    //     RNDateTimePicker.open({
-    //         date: startDate,
-    //         mode: 'datetime',
-    //         is24Hour: true,
-    //         android: {
-    //             headerColor: '#06aed5',
-    //             headerText: 'Sélectionnez une date',
-    //             cancelText: 'Annuler',
-    //             okText: 'OK'
-    //         }
-    //     }).then(date => {
-    //         if (date) {
-    //             setStartDate(date);
-    //         }
-    //     }
-    //     );
-    // }
-
-    // const showEndDatePicker = () => {
-    //     RNDateTimePicker.open({
-    //         date: endDate,
-    //         mode: 'datetime',
-    //         is24Hour: true,
-    //         android: {
-    //             headerColor: '#06aed5',
-    //             headerText: 'Sélectionnez une date',
-    //             cancelText: 'Annuler',
-    //             okText: 'OK'
-    //         }
-    //     }).then(date => {
-    //         if (date) {
-    //             setEndDate(date);
-    //         }
-    //     }
-    //     );
-    // }
-
-//     return (
-//         <View>
-//             <View>
-//                 <Button
-//                     onPress={showStartDatePicker}
-//                     title="Sélectionnez une date de Début"
-//                 />
-//             </View>
-//             <View>
-//                 <Button
-//                     onPress={showEndDatePicker}
-//                     title="Sélectionnez une date de fin"
-//                 />
-//             </View>
-//             <Text>{startDate.toLocaleDateString()}</Text>
-//             <Text>{endDate.toLocaleDateString()}</Text>
-//         </View>
-//     );
-// }
 
 export default AddEventPage;
